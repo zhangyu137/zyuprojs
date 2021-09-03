@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>历史记录</title>
+    <link rel="stylesheet" type="text/css" href="../css/history.css"/>
+
+</head>
+<body>
+
+<div id="container">
+    <div id="title"><h2 style="text-align: center;">--- &nbsp; 历史记录 &nbsp; ---</h2></div>
+    <details >
+        <summary id="zhankai" >过去消耗以及摄入的记录</summary>
+        <form name="form1">
+        <ol id="choice1">
+            <li style="list-style: none "><div>查询某一天自己历史早餐消耗记录:<br><input type="date" name="select1" placeholder="此处输入日期">&nbsp;&nbsp;&nbsp;
+                <input type="button" value="查询" onclick="dolist2()">
+            </div></li>
+            <li style="list-style: none "><div>查看某一天自己历史午餐消耗记录:<br><input type="date" name="select2" placeholder="此处输入日期">&nbsp;&nbsp;&nbsp;
+                <input type="button" value="查询" onclick="dolist3()">
+                </div></li>
+            <li style="list-style: none" ><div>查看某一天自己历史晚餐消耗记录:<br><input type="date" name="select3" placeholder="此处输入日期">&nbsp;&nbsp;&nbsp;
+                <input type="button" value="查询" onclick="dolist4()">
+               </div></li>
+
+            <li style="list-style: none" ><input type="button" value="查看所有时间段记录" onclick="$(function() {dolist();})"></li>
+
+        </ol>
+        </form>
+
+    </details>
+    <table id="dataTable1" >
+        <tr>
+            <th>早摄取热量</th>
+            <th>中摄取热量</th>
+            <th>晚摄取热量</th>
+            <th>总摄取热量</th>
+            <th>运动总消耗热量</th>
+            <th>日期</th>
+
+
+        </tr>
+        <tbody id="dataTable2"></tbody>
+
+    </table>
+</div>
+
+</body>
+<script type="text/javascript" src="../js/jquery-1.8.0.js" charset="UTF-8"></script>
+<script type="text/javascript">
+    user = sessionStorage.getItem("yh");
+    yh = JSON.parse(user);
+    function dolist(){
+
+         $.get("/DietManagementSystem/DairyController/list1.do",{uno:yh.uno},function (dairy){
+             if (null!=dairy&&dairy.length>0){
+                  $("#dataTable2").empty();
+                 for(i=0;i<dairy.length;i++){
+                     var dairy1=dairy[i];
+
+                 $("#dataTable2").append(
+                     $("<tr>").append(
+                         $("<td>").html(dairy1.zaorl))
+                     .append($("<td>").html(dairy1.zhongrl))
+                     .append($("<td>").html(dairy1.wanrl))
+                     .append($("<td>").html(dairy1.zongrl))
+                     .append($("<td>").html(dairy1.xhl))
+                     .append($("<td>").html(dairy1.ddate))
+                 );
+             }
+         }
+    },"json")
+    }
+
+    function dolist2(){
+        $.get("/DietManagementSystem/DairyController/list2.do",{uno:yh.uno,ddate:form1.select1.value},function (dairy){
+            if (null!=dairy&&dairy.length>0){
+                $("#dataTable2").empty();
+                for(i=0;i<dairy.length;i++){
+                    var dairy1=dairy[i];
+
+                    $("#dataTable2").append(
+                        $("<tr>").append(
+                            $("<td>").html(dairy1.zaorl))
+                            .append($("<td>"))
+                            .append($("<td>"))
+                            .append($("<td>").html(dairy1.zongrl))
+                            .append($("<td>").html(dairy1.xhl))
+                            .append($("<td>").html(dairy1.ddate))
+                    );
+                }
+            }
+        },"json")
+    }
+
+    function dolist3(){
+
+        $.get("/DietManagementSystem/DairyController/list3.do",{uno:yh.uno,ddate:form1.select2.value},function (dairy){
+            if (null!=dairy&&dairy.length>0){
+                $("#dataTable2").empty();
+                for(i=0;i<dairy.length;i++){
+                    var dairy1=dairy[i];
+
+                    $("#dataTable2").append(
+                        $("<tr>").append(
+
+                           $("<td>"))
+                            .append($("<td>").html(dairy1.zhongrl))
+                            .append($("<td>"))
+                            .append($("<td>").html(dairy1.zongrl))
+                            .append($("<td>").html(dairy1.xhl))
+                            .append($("<td>").html(dairy1.ddate))
+                    );
+                }
+            }
+        },"json")
+    }
+
+    function dolist4(){
+
+        $.get("/DietManagementSystem/DairyController/list4.do",{uno:yh.uno,ddate:form1.select3.value},function (dairy){
+            if (null!=dairy&&dairy.length>0){
+                $("#dataTable2").empty();
+                for(i=0;i<dairy.length;i++){
+                    var dairy1=dairy[i];
+
+                    $("#dataTable2").append(
+                        $("<tr>").append(
+
+
+                            $("<td>"))
+                            .append($("<td>"))
+                            .append($("<td>").html(dairy1.wanrl))
+                            .append($("<td>").html(dairy1.zongrl))
+                            .append($("<td>").html(dairy1.xhl))
+                            .append($("<td>").html(dairy1.ddate))
+                    );
+                }
+            }
+        },"json")
+    }
+</script>
+
+
+</html>

@@ -1,0 +1,277 @@
+a{
+	text-decoration: none;
+	color: #000;
+}
+body{
+	background-color: #495057;
+	margin: 0;
+	
+}
+#xxdtnr,#xxdtno{
+	width: 450px;
+	    padding: 0px 1px;
+	    border-radius: 5px;
+	    height: 34px;
+	    line-height: 49px;
+	    outline: none;
+	    font-family: Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+		margin: 10px 2px 10px 26px;
+}
+#container{
+	height: auto;
+	margin: 80px 40px 40px 40px;
+	width: auto;
+	display: flex;
+	flex-direction: row;
+}
+#profile_details{
+	padding-bottom: 50px;
+	width: 345px;
+	height: auto;
+	position: fixed;
+}
+#content,#content1{
+	width: 1090px;
+	height: auto;
+	position: relative;
+	left: 370px;
+	padding: 10px 0px;
+}
+.fra{
+	margin: 0 12px;
+	border-radius: 5px;
+	background-color: #FFFFFF;
+}
+#tx{
+	padding: 25px 105px 5px 105px;
+}
+#tx1{
+	width: 128px;
+	height: 128px;
+}
+.p1{
+	padding: 0px 25px;
+	color: #000;
+	font-size: 14px;
+}
+#gddt{
+	padding: 0px 494px;
+	    margin: 5px 18px;
+	    color: white;
+	    background: #495057;
+	    border-radius: 5px;
+		cursor: pointer;
+}
+#gddt:hover{
+	background: red;
+}
+#name{
+	margin-bottom: 28px;
+	text-align: center;
+}
+#top{
+	cursor: pointer;
+	    width: 100px;
+	    height: 100px;
+	    background-color: #5f6368;
+	    position: fixed;
+	    top: 593px;
+	    left: 298px;
+	    border-radius: 8px;
+	    opacity: 0.6;
+		background-image: url(../img/world/caps-unlock-filling.png);
+		background-repeat: no-repeat;
+		background-size: 100px 100px;
+}
+#top:hover{
+	background-image: url(../img/world/caps-unlock-filling-1.png);
+	opacity: 1;
+}
+
+.function{
+		text-align: center;
+	    margin: 1px auto;
+	    width: 140px;
+	    height: 45px;
+	    background-color: #c9cbcd;
+	    border-radius: 25px;
+}
+.function:hover{
+	background-color: red;
+}
+.function img{
+	width: 30px;
+	    height: 30px;
+	    position: relative;
+	    top: 7px;
+}
+.item{
+	position: relative;
+	padding-bottom: 12px;
+	width:auto;
+	height:auto;
+	margin: 0px 19px;
+	border-bottom: 1px solid #495057;
+}
+.del{
+	    cursor: pointer;
+	    position: absolute;
+	    right: 42px;
+	    top: 40px;
+	    color: white;
+	    height: 37px;
+	    border-radius: 8px;
+	    width: 37px;
+	    background-image: url(../img/world/Delete.svg);
+		background-repeat: no-repeat;
+		background-size: 37px 37px;
+}
+.del:hover{
+	background-image: url(../img/world/Delete1.svg);
+	transform: scale(0.92);
+}
+.head{
+	line-height: 30px;
+}
+.head_name{
+	color: #495057;
+}
+.tx2{
+	width: 30px;
+	    height: 30px;
+	    border-radius: 100%;
+	    position: relative;
+	    top: 8px;
+	    margin: auto 13px;
+}
+.item_date{
+	font-size: 10px;
+	color: #495057;
+	padding: 8px 38px;
+	float: right;
+}
+.item_content{
+	    color: #706f6f;
+padding: 9px 92px 9px 60px;
+	    font-size: 15px;
+}
+.photo{
+	padding: 0px 60px;
+}
+.pho{
+	width: 250px;
+	    height: 161px;
+}
+.item_fax{
+	padding: 0px 60px;
+}
+.item_fax img{
+	cursor: pointer;
+	width: 25px;
+	height: 25px;
+	border-radius: 100%;
+}
+.item_fax img:hover{
+	transform: scale(0.85);
+}
+.imgBox {
+   width: 30px;
+   height: 30px;
+   overflow: hidden;
+}
+.imgBox img{
+  width: 30px;
+  height: 30px;
+  transform: translateX(-30px);
+  filter: drop-shadow(30px 0 0 red);
+}
+.sl{
+	top: -3px;
+	position: relative;
+	font-size: 10px;
+	padding: 0px 10px;
+}
+.pl_out{
+    width: 982px;
+    overflow: hidden;
+	position: relative;
+	display: none;
+}
+.pl{
+	max-height: 250px;
+	width: 1000px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+		position: relative;
+}
+.pl{
+	width: 1000px;
+		position: relative;
+}
+.tssj{
+	    height: 0;
+	    width: 0;
+	    border: 10px solid;
+	    border-top: none;
+	    border-right-color: transparent;
+	    border-left-color: transparent;
+	    position: absolute;
+		
+			top: -1px;
+			    left: 116px
+}
+.pl_item{
+	    margin: 0px 58px;
+	    border-bottom: 0.5px solid;
+		position: relative;
+}
+
+.tx3{
+	width: 30px;
+	    height: 30px;
+	    border-radius: 100%;
+	    position: relative;
+	    top: 8px;
+	    margin: auto 13px;
+}
+.pl_name,.pl_date,.pl_dtno{
+	    color: #706f6f;
+	    font-size: 12px;
+}
+.pl_delete{
+	cursor: pointer;
+	position: absolute;
+	left: 725px;
+	top: 40px;
+	color: white;
+	height: 37px;
+	border-radius: 8px;
+	width: 37px;
+	background-image: url(../img/world/Delete.svg);
+	background-repeat: no-repeat;
+	background-size: 37px 37px;
+}
+#cxbutton{
+	display: inline-block;
+	background-color: #495057;
+}
+.pl_delete:hover{
+	background-image: url(../img/world/Delete1.svg);
+	transform: scale(0.92);
+}
+.name_pl{
+	position: relative;
+	    left: 70px;
+	    top: -17px;
+}
+.pl_nr{
+	font-size: 14px;
+	padding-right: 144px;
+}
+.form1{
+	text-align: center;
+	margin-top: 10px;
+}
+.tjpl{
+	width: 472px;
+}

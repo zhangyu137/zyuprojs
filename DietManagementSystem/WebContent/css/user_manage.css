@@ -1,0 +1,44 @@
+body{
+	margin: 0;
+	background-color: #495057;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+#meun{
+	margin: 20px 15px;
+	border-radius: 8px;
+	width: 185px;
+	height: 634px;
+	position: fixed;
+	top: 49.99px;
+	background-color: white;
+}
+#content{
+}
+.img1{
+	width: 30px;
+	height: 30px;
+	padding: 10px 2px;
+	position: relative;
+	top: 17px;
+}
+
+.bt{
+	font-family: monospace;
+	font-size: 28px;
+	color: black;
+	margin: 35px;
+}
+.xx{
+	text-align: center;
+	font-size: 20px;
+	margin: 10px 0;
+}
+.xx:hover{
+	background-color: #E9E9E4;
+}
+.tb{
+	
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>用户动态管理</title>
+	<link rel="stylesheet" type="text/css" href="../contFrame/css/userContent.css"/>
+</head>
+<body>
+	<!--contentPanel内容面板：1.search  2.space  3.content -->
+	<div id="contentPanel">
+		
+		<!-- 1.search -->
+		<div class="search">
+			<!-- 1.1. head -->
+			<div class="head">
+				<span> 查询条件</span>
+				<span class="showHide">
+					<img src="img/up.ico" class="up"/>
+					<img src="img/down.ico" class="down" style="display: none;"/>
+				</span>
+			</div>
+			<!-- 1.2. body -->
+			<div class="body">
+				<form name="form1">
+					<table width="100%" cellspacing="0">
+						<tr>
+							<td>动态内容</td>
+							<td><input name="content" placeholder="支持模糊查询"/></td>
+						</tr>
+						<tr>
+							<td id="btnPanel">
+								<input type="button" value="查询" onclick="doList()"/>
+								<input type="reset"/>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+		
+		<!-- 2.space -->
+		<div class="space"></div>
+		
+		<!-- 3.content -->
+		<div class="content">
+			<!-- 3.1. head -->
+			<div class="head">
+				<span> 查询结果</span>
+				<span onclick="location.reload()" class="refresh"><img src="img/refresh.ico" style="width: ;height: ;"/></span>
+			</div>
+			<!-- 3.2. body -->
+			<div class="body" >
+				<table width="100%" cellspacing="0">
+					<tr>
+						<th width="5%">动态编号</th>
+						<th width="5%">用户姓名</th>
+						<th width="10%">内容</th>
+						<th width="10%">图片</th>
+						<th width="10%">操作</th>
+					</tr>
+					<tbody id="table1"></tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/jquery-1.8.0.js" charset="UTF-8"></script>
+<script type="text/javascript">
+	$(function(){
+		doList();
+	});
+	
+	function doList(){
+		$.get("/DietManagementSystem/DtController/list.do",{content:form1.content.value},function(dt){
+			if(null != dt && dt.length > 0){
+				$("#table1").empty();
+				for(i = 0; i < dt.length; i++){
+					var dt1 = dt[i];
+					$("#table1").append(
+						$("<tr>")
+						.append($("<td>").html(dt1.dtno))
+						.append($("<td>").html(dt1.uname))
+						.append($("<td>").html(dt1.content))
+						.append($("<td>").html("<img src='/DietManagementSystem/file/"+dt1.dtpicturet+"' style='width:30px;height:30px'>"))
+						.append(
+									$("<td>")
+										.append("<a onclick='doDelete(\""+dt1.dtno+"\")'>删除</a> ")
+								)
+					);
+				}
+			}
+		},"json")
+	}
+	
+	function doDelete(bh){
+		$.post("/DietManagementSystem/DtController/deleteByDtno.do",{dtno:bh},function(ret){
+			if(ret == false){
+				alert("删除失败！");
+			}else{
+				doList();
+			}
+		});
+	}
+	
+</script>
+</html>

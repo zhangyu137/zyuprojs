@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>信息修改</title>
+	<link rel="stylesheet" type="text/css" href="../contFrame/css/userContent.css"/>
+	<link href="./css/record-today.css" rel="stylesheet" />
+	<link href="./css/form_table.css" rel="stylesheet" />
+	
+</head>
+<body>
+<div id="container">
+			<div id="title"><h2 style="text-align: center;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改用户信息 &nbsp;</h2></div>
+			<div id="content">
+				<div id="in">
+				
+				<form name="form1">
+			<table width="100%" cellspacing="0">
+				<tr><td colspan="2" style="text-align: center;color: red;" id="tip">&nbsp;</td></tr>
+				<tr>
+					<td width="46%">用户昵称</td>
+					<td><input id="uname" /><span>*</span></td>
+				</tr>
+				<tr>
+					<td>手机号</td>
+					<td><input name="phone"  id="phone"/><span>*</span></td>
+				</tr>
+				<tr>
+					<td>密码</td>
+					<td><input name="pwd"  id="pwd"/><span>*</span></td>
+				</tr>
+				<tr>
+					<td>体重(kg)</td>
+					<td><input name="weight"  id="weight"/></td>
+				</tr>
+				<tr>
+					<td>身高(cm)</td>
+					<td><input name="height"  id="height"/></td>
+				</tr>
+				<tr>
+					<td>生日</td>
+					<td><input type="date" name="birth"  id="birth" value="2000-08-10"/></td>
+				</tr>
+				<tr>
+					<td>注册时间</td>
+					<td><input name="udate"  id="udate" disabled="disabled"/></td>
+				</tr>
+	
+				<tr>
+					<td colspan="2" id="btnPanel">
+						<input type="button" value="更新" onclick="doUpdate()"/>
+						<input type="reset"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+				</div>
+				<div id="out"></div>
+			</div>
+			<div id="compare">
+				
+			</div>
+			<div id="out">
+			</div>
+</div>
+</body>
+
+<script src="../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+        bh = sessionStorage.getItem("uno");// 从 sessionStorage 中获取用户编号
+        uno = JSON.parse(bh);
+
+
+$(function(){
+   $.post("/DietManagementSystem/YhController/selectByUno.do",{uno:uno},function(yh){
+		$("#uname").val(yh.uname);
+		$("#phone").val(yh.phone);
+		$("#pwd").val(yh.pwd);			
+		$("#weight").val(yh.weight);			
+		$("#height").val(yh.height);			
+		$("#birth").val(yh.birth);			
+		$("#udate").val(yh.udate);
+					
+});
+});
+
+function doUpdate(){
+	$.ajax({
+		type:"POST",											
+		url:"/DietManagementSystem/YhController/update.do",
+		data:{	
+			uno:uno,
+			uname:$("#uname").val(),
+			phone:$("#phone").val(),
+			pwd:$("#pwd").val(),
+			weight:$("#weight").val(),
+			height:$("#height").val(),
+			birth:$("#birth").val(),
+		},								// 提交数据
+		success:function(ret){
+			if(ret == true){
+				$("#tip").html("更新成功！");
+			}else{
+				$("#tip").html("更新失败！");
+			}
+		}
+	});
+	
+}
+</script>
+</html>

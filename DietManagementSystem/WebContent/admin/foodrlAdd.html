@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>添加食物</title>
+	<link rel="stylesheet" type="text/css" href="../contFrame/css/userContent.css"/>
+</head>
+<body>
+	<div class="body">
+		<form name="form1">
+			<table width="100%" cellspacing="0">
+				<tr><td colspan="2" style="text-align: center;color: red;" id="tip">&nbsp;</td></tr>
+				<tr>
+					<td width="46%">食物名称</td>
+					<td><input name="fname" id="fname"/><span>*</span></td>
+				</tr>
+				<tr>
+					<td>食物热量</td>
+					<td><input name="foodrl" id="foodrl"/><span>*</span></td>
+				</tr>
+				<tr>
+					<td colspan="2" id="btnPanel">
+						<input type="button" value="保存"   onclick="doAdd()"/>
+						<input type="reset"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+<script src="../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+/** 食物名 校验 */
+function checkFname(){
+	if(form1.fname.value == ''){
+		$("#fname").next().html("食物名不能为空");
+		return false;
+	}else{
+		$("#fname").next().html("*");
+		return true;
+	}
+}
+$("[name='fname']").blur(function(){
+ 	checkFname();
+});
+
+/**校验食物热量是否为空*/
+function checkFoodrl(){
+	if(form1.foodrl.value == ''){
+		$("#foodrl").next().html("热量不能为空");
+		return false;
+	}else{
+		$("#foodrl").next().html("*");
+		return true;
+	}
+}
+$("[name='foodrl']").blur(function(){
+ 	checkFoodrl();
+});
+
+
+/** 新增保存*/
+function doAdd(){
+	if(checkFname() && checkFoodrl()){
+		$.post("/DietManagementSystem/FoodController/add.do",
+				{	
+					fname:$("#fname").val(),
+					foodrl:$("#foodrl").val()
+				},
+				function(ret){
+					if(ret == true){
+						$("#tip").html("添加成功！");
+					}else{
+						$("#tip").html("添加失败！");
+					}
+				},
+		);
+	}
+}
+</script>
+</html>
+
