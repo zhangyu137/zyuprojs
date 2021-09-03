@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <link rel="icon" href="./images/maomi.png" type="image/x-icon">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>用户注册</title>  
+    <link rel="stylesheet" href="css/pintuer.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div class="bg"></div>
+<div class="container">
+    <div class="line bouncein">
+        <div class="xs6 xm4 xs3-move xm4-move">
+            <div style="height:50px;"></div>
+            <div class="media media-y margin-big-bottom">           
+            </div>         
+            <form action="/ExpressLogisticsInformationSystem/CompanyServlet?m=add" method="post">
+            <div class="panel loginbox">
+                <div class="text-center margin-big padding-big-top"><h1>公司注册界面</h1></div>
+                <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+                            <input type="text" class="input input-big" name="name" placeholder="公司名称" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+                            <input type="text" class="input input-big" name="phone" placeholder="手机号"  />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                    	<div class="field field-icon-right">
+                    	 	<input type="text" class="input input-big" name="corporation" placeholder="法人"  />
+ 						 </div>
+                    </div>
+                    <div class="form-group">
+                    	<div class="field field-icon-right">
+                    	 	<input type="password" class="input input-big" name="pwd" placeholder="密码"  />
+ 						 </div>
+                    </div>
+                    <div class="form-group">
+                    	<div class="field field-icon-right">
+ 						 </div>
+                    </div>
+                </div>
+                <div style="padding:10px;">
+                	<input type="submit" class="button button-block bg-main text-big input-big" name="register" value="注册">
+                </div>
+           		<div style="padding:10px;">
+                	<a href="login.html"><input type="button"  class="button button-block bg-main text-big input-big" name="返回" value="返回"></a>
+                </div>
+            </div>
+            </form>          
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/pintuer.js"></script> 
+<script type="text/javascript">
+function checkName(){
+	var info = "";
+	if(/^.{1,20}$/.test($("[name='name']").val())){
+		return true;
+	}else if($("[name='name']").val()===""){
+		info = "请输入名字";
+		$("[name='name']").attr("data-validate","required:"+info);
+		return false;
+	}
+	else{
+		info="名字格式不对";
+		$("[name='name']").attr("data-validate","name:"+info);
+		return false;
+	}
+}
+function checkPhone(){
+	var info = "";
+	if(/^1\d{10}$/.test($("[name='phone']").val())){
+		return true;
+	}else if($("[name='phone']").val()===""){
+		info = "请输入手机号";
+		$("[name='phone']").attr("data-validate","required:"+info);
+		return false;
+	}
+	else{
+		info="手机号格式不对";
+		$("[name='phone']").attr("data-validate","phone:"+info);
+		return false;
+	}
+}
+function checkCorporation(){
+	var info = "";
+	if(/^.{1,20}$/.test($("[name='corporation']").val())){
+		return true;
+	}else if($("[name='corporation']").val()===""){
+		info="请输入法人";
+		$("[name='corporation']").attr("data-validate","required:"+info);
+		return false;
+	}else{
+		info="法人格式不对";
+		$("[name='corporation']").attr("data-validate","corporation:"+info);
+		return false;
+	}
+}
+function checkPwd(){
+	var info = "";
+	if(/^.{1,10}$/.test($("[name='pwd']").val())){
+		return true;
+	}else if($("[name='pwd']").val()===""){
+		info="请输入密码";
+		$("[name='pwd']").attr("data-validate","required:"+info);
+		return false;
+	}else{
+		info="密码格式不对";
+		$("[name='pwd']").attr("data-validate","pwd:"+info);
+		return false;
+	}
+}
+
+$("[name='phone']").blur(function(){
+	var info1 = checkPhone();
+});
+$("[name='name']").blur(function(){
+	var info = checkName();
+});
+$("[name='pwd']").blur(function(){
+	var info = checkPwd();
+});
+$("[name='corporation']").blur(function(){
+	var info = checkCorporation();
+});
+
+function doRegister(){
+	if(checkPhone()&&checkPwd()&&checkName()&&checkCorporation()){
+		$("form").submit();
+	}else{
+		checkPhone();
+		checkPwd();
+		checkName();
+		checkCorporation();
+	}
+}
+
+$("[name='register']").click(function(){
+	doRegister();
+});
+//判断如果按下Enter回车键，则注册
+$(document).keydown(function(e){
+	e = e || window.event
+	if(e.keyCode == 13){//Enter键对应键值为13
+		doRegister();
+	}
+});
+</script>
+ 
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <link rel="icon" href="./images/maomi.png" type="image/x-icon">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>登录</title>  
+    <link rel="stylesheet" href="css/pintuer.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div class="bg"></div>
+<div class="container">
+    <div class="line bouncein">
+        <div class="xs6 xm4 xs3-move xm4-move">
+            <div style="height:50px;"></div>
+            <div class="media media-y margin-big-bottom">           
+            </div>         
+            <form action="/ExpressLogisticsInformationSystem/LoginServlet" method="post">
+            <div class="panel loginbox">
+                <div class="text-center margin-big padding-big-top"><h1>物流管理中心</h1></div>
+                <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+                            <input type="text" class="input input-big" name="phone" placeholder="登录账号(手机号)" />
+                            <span id="info" class="icon icon-user margin-small"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+                            <input type="password" class="input input-big" name="pwd" placeholder="登录密码"  />
+                            <span class="icon icon-key margin-small"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                    	<div class="field field-icon-right">
+ 						 </div>
+                    </div>
+                    <div class="form-group">
+                    	<div class="field field-icon-right">
+                    	 <input name="shenfen" type="radio" value="custom" checked="checked"/><label>顾客</label>
+ 						 <input name="shenfen" type="radio" value="company"/><label>快递公司</label>
+ 						 <input name="shenfen" type="radio" value="manager"/><label>管理员</label>
+ 						 <a href="aregister.html" class="as">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户注册</a>
+ 						 <a href="cregister.html" class="as">公司注册</a>
+ 						 </div>
+                    </div>
+                </div>
+                <div style="padding:30px;">
+                	<input type="button" class="button button-block bg-main text-big input-big" name="denglu" value="登录">
+                </div>
+            </div>
+            </form>    
+            </div>      
+        </div>
+    </div>
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/pintuer.js"></script> 
+<script type="text/javascript">
+function checkPhone(){
+	var info = "";
+	if($('input:radio:checked').val()=="manager"){
+		if(/^.{1,20}$/.test($("[name='phone']").val())){
+			return true;
+		}else if($("[name='phone']").val()===""){
+			info = "请输入账号";
+			$("[name='phone']").attr("data-validate","required:"+info);
+			return false;
+		}else{
+			info="账号格式不对";
+			$("[name='phone']").attr("data-validate","name:"+info);
+			return false;
+		}
+		
+	}else{
+		if(/^1\d{10}$/.test($("[name='phone']").val())){
+			return true;
+		}else if($("[name='phone']").val()===""){
+			info = "请输入手机号";
+			$("[name='phone']").attr("data-validate","required:"+info);
+			return false;
+		}else {
+			info="手机号格式不对";
+			$("[name='phone']").attr("data-validate","phone:"+info);
+			return false;
+		}
+	}
+}
+
+function checkPwd(){
+	var info = "";
+	if($("[name='pwd']").val().length>10){
+		info="密码格式不对";
+		$("[name='pwd']").attr("data-validate","pwd:"+info);
+		return false;
+	}else if($("[name='pwd']").val()===""){
+		info="请输入密码";
+		$("[name='pwd']").attr("data-validate","required:"+info);
+		return false;
+	}
+	if(/^.{1,10}$/.test($("[name='pwd']").val())){
+		return true;
+	}
+	
+}
+$("[name='phone']").blur(function(){
+ 	checkPhone();
+});
+$("[name='pwd']").blur(function(){
+	checkPwd();
+});
+
+function doLogin(){
+	if(checkPhone()&&checkPwd()){
+		$("form").submit();
+	}else{
+		checkPhone();
+		checkPwd();
+	}
+}
+
+$("[name='denglu']").click(function(){
+	doLogin();
+});
+
+//判断如果按下Enter回车键，则登录
+$(document).keydown(function(e){
+	e = e || window.event
+	if(e.keyCode == 13){//Enter键对应键值为13
+		doLogin();
+	}
+});
+/**var n = document.querySelectorAll("[name='shenfen']");
+for(i=0;i<n.length;i++){
+	n[i].onclick=function(){
+		if(this.checked){
+		$("[name='pwd']").removeAttr("data-validate");
+		$("[name='phone']").removeAttr("data-validate");
+		}
+	}
+}*/
+
+</script>
+ 
+</html>
