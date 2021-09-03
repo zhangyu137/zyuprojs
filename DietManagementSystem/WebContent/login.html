@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/jquery.js"></script>
+		<style>
+			a{text-decoration: none;}
+			#content{text-align: center;}
+			#form1{text-align: center;}
+			.wjpwd{}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="content">
+				<h1>FM饮食管理登录中心</h1>
+				<form action="#" method="post" id="form1" name="form1">
+					<input type="text" name="phone" placeholder="账号" /><br>
+					<input type="password" name="pwd" placeholder="密码"/><br>
+					<input type="button" onclick="login()" value="登录"/><a href="#" class="wjpwd">忘记密码？</a><br>
+					<input type="button" onclick="#" value="注册"/>
+				</form>
+			</div>
+		</div>
+	</body>
+	<script>
+		$(function(){
+			
+		});
+		
+		function login(){
+			var url="/DietManagementSystem/YhController/selectToLogin.do";
+			var params={
+					phone:form1.phone.value,
+					pwd:form1.pwd.value
+			}
+			$.post(url,params,function(yh){
+				if(null!=yh&&""!=yh){
+					sessionStorage.setItem("yh",JSON.stringify(yh));
+					location = "/DietManagementSystem/index.html";
+				}else {//user值为空，说明该用户不存在，用户名或密码有误，重新登录
+					alert("用户名或密码错误");
+				}
+			});
+		};
+	</script>
+</html>

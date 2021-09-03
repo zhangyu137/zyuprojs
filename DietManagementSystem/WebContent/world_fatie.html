@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/jquery.js"></script>
+		<style>
+			#container{
+				height: 900px;
+				padding-top: 80px;
+			}
+			#content{
+				text-align: center;
+			}
+			#text{
+				width: 600px;
+				height: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="content">
+				<form name="form1">
+					<input type="text" name="uname" id="uname" style="display: none;"/>
+					<input type="text" name="content" id="content" placeholder="--在这编辑文本内容--" />
+					<input type="file" name="img" id="img1" accept="image/*" />
+					<input type="file" name="img" id="img2" accept="image/*" />
+					<input type="file" name="img" id="img3" accept="image/*" />
+					<input type="file" name="img" id="img4" accept="image/*" />
+					<input type="file" name="img" id="img5" accept="image/*" />
+					<input type="file" name="img" id="img6" accept="image/*" />
+					<input type="button" id="fb" value="发布" onclick="release()" />
+				</form>
+			</div>
+		</div>
+	</body>
+	<script>
+		var val = sessionStorage.getItem("yh");
+		var yh = JSON.parse(val);
+		$(function(){
+			$("#uname").attr("value",yh.uname);
+		})
+		function release(){
+			var formData=new FormData(form1);
+			console.log("formData",formData);
+			$.ajax({
+				url:"/DietManagementSystem/DtController/add.do",
+				type:"post",
+				data:new FormData(form1),
+				dataType:"json",
+				processData: false,  									// 告诉jQuery不要去处理发送的数据
+				contentType: false,   									// 告诉jQuery不要去设置Content-Type请求头
+				beforeSend:function(){
+					console.log("图片上传中");
+				},
+				success:function(fileName){
+					console.log("upload success!");
+					location = "/DietManagementSystem/world.html";
+				}
+					
+			});
+		}
+	</script>
+</html>

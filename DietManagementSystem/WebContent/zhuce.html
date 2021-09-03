@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	    <link rel="stylesheet" type="text/css" href="css/loginRegister.css"/>
+		<title></title>
+	</head>
+	<body>
+		<div id="container">
+			<div id="content">
+				<form action="#" method="post" name="form1">
+					<input type="text" name="uname" placeholder="名称" /><br>
+					<input type="text" name="phone" placeholder="电话号码" /><br>
+					<input type="password" name="pwd" placeholder="密码" /><br>
+					<input type="text" name="weight" placeholder="体重(kg)" /><br>
+					<input type="text" name="height" placeholder="身高(cm)" /><br>
+					<select name="sex" id="sex" >
+							<option value="男">男</option>
+							<option value="女">女</option>
+						</select>
+					<input type="date" name="birth" id="birth" placeholder="生日" /><br>
+					<input type="button" id="zhuce" value="注册" onclick="doZhuce()" />
+				</form>
+			</div>
+			
+		</div>
+	</body>
+		<script src="js/jquery.js"></script>
+	<script>
+		function doZhuce(){
+			var url="/DietManagementSystem/YhController/add.do";
+			var params={
+					uname:form1.uname.value,
+					phone:form1.phone.value,
+					pwd:form1.pwd.value,
+					weight:form1.weight.value,
+					height:form1.height.value,
+					sex:$("#sex").val(),
+					birth:$("#birth").val()
+			}
+			$.post(url,params,function(ret){
+				alert("注册成功");
+				location = "/DietManagementSystem/yhlogin.html";
+			});
+		}
+	</script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/world.css" />
+		<link rel="shortcut icon" href="img/logo.png" />
+		<script src="js/jquery.js"></script>
+		<script src="js/world_cxxx.js"></script>
+		<title></title>
+	</head>
+	<body>
+		<div id="container">
+			<div id="profile_details" class="fra">
+				<p class="p1">个人资料详情</p>
+				<div id="tx">
+					<img src="./img/world/User.png" style="border-radius: 100%;" id="tx1"/>
+				</div>
+				<div id="name">请登录</div>
+				<div class="function">
+					<a href="world_fatie.html" target="_self"><img src="img/world/edit-filling.png">发帖</a>
+				</div>
+				<div class="function">
+					<a href="world_mytie.html" target="_self" id="tie"><img src="img/world/home-filling.png">我的帖子</a>
+				</div>
+				<div class="function">
+					<a href="javascript:void(0);" onclick="lb()" id="glpl"><img src="img/world/comment-filling-1.png">我的评论</a>
+				</div>
+				<div class="function">
+					<a href="world_sc.html" id="sc"><img src="img/world/favorite-filling.png">我的收藏</a>
+				</div>
+			</div>
+			<div id="content1" class="fra">
+				<p class="p1">世界</p>
+				<form name="cxxx">
+					<input type="text" id="xxdtno" name="xxdtno" placeholder="动态编号，鼠标浮停动态页面发帖人头像获取"/>
+					<input type="text" id="xxdtnr" name="xxdtnr" placeholder="评论内容"/>
+					<input type="button" onclick="cx()" value="查询" style="cursor: pointer;"/>
+				</form>
+				<div class="pl1">
+					<div class="pl_item" style="display: none;">
+						<span><a href="#"><img src="img/tx1.jpg" class="tx3"></a></span>
+						<span class="name_pl">
+							<div class="pl_dtno">to: fhah</div>
+							<div class="pl_name">主宰</div>
+							<div class="pl_delete" onclick="plsc(this)">删除</div>
+							<div class="pl_nr">立，带领人民打帝国反内战等等提供了极大的积极作用，为社会主义现代化指明了道路和方向。1949年10月1日，中华人民共和国向全世界人民面前宣告正式成立，中国共产党正式成为中华人民共和国内的唯一无二的执政党。全国人民沸腾欢呼呐喊，这是个震撼人心和令人印象深刻的时刻，代表着中华人民站起来了，洗刷了百来年的辱国辱民的艰难苦难，从那个时刻开始中国走出了多灾多难鸿沟。在1978年的改革开发后，中国以更为积极和开发的姿态走向世界舞台。在短短几十年间，中国共产党带领腐朽落后且</div>
+							<div class="pl_date">12:34</div>
+						</span>
+					</div>
+				</div>
+				<div id="gddt" onclick="pjdtome()">点击更多</div>
+			</div>
+		</div>
+	</body>
+	
+</html>

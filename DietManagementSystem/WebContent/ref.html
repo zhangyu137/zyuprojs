@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>FM饮食管家</title>
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="shortcut icon" href="img/logo.png" />
+		<script src="js/jquery.js"></script>
+		<script src="js/ref.js"></script>
+		<script>
+			$(function(){
+				$(parent.window).scroll(function(){
+				        var $el = $('#search_item');
+				        if ($(this).scrollTop() > 200){
+				          $el.css({'top': $(parent.window).scrollTop()+80}); 
+				        }
+				        if ($(this).scrollTop() < 200){
+				          $el.css({'top': '276px'}); 
+				        } 
+				    });
+			});
+			
+		</script>
+	</head>
+	
+	<body>
+		<div id="container" style="margin-top: 49.99px;">
+			<div id="search">
+				<div id="title">
+					<p>专业全面的食物数据库</p>
+					<div id="search_item">
+						<form name="form1" action="#" method="post">
+							<input type="text" name="foodname" placeholder="搜索食物查询热量" id="text_input" />
+							<div id="text_button" onclick="ss()">搜索</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div id="ref">
+				<div id="ref_head">
+					<span>---&nbsp &nbsp</span>
+					<span id="span1">常见食物分类</span>
+					<span>&nbsp &nbsp---</span>
+				</div>
+				<div id="cxnr">
+					<table border="0" id="table1">
+						<tr>
+							<td>
+								<div><a href="#" target="_blank"><img class="img1" src="img/1.png"></a></div>
+								<div class="div1"><a href="#" target="_blank" class="categories">谷薯芋、杂豆、主食</a></div>
+								<div><a href="#" target="_blank" class="details">米饭&nbsp</a><a href="#" target="_blank" class="details">鲜玉米&nbsp</a><a href="#" target="_blank" class="details">馒头&nbsp</a><a href="#" target="_blank" class="details">燕麦片&nbsp</a><a href="#" target="_blank" class="details">红薯</a></div>
+							</td>
+							<td>
+								<div><a href="#" target="_blank"><img class="img1" src="img/2.png"></a></div>
+								<div class="div1"><a href="#" target="_blank" class="categories">蛋类、肉类及制品</a></div>
+								<div><a href="#" target="_blank" class="details">鸡蛋&nbsp</a><a href="#" target="_blank" class="details">咸鸭蛋&nbsp</a><a href="#" target="_blank" class="details">猪肉(瘦)&nbsp</a><a href="#" target="_blank" class="details">鸡&nbsp</a><a href="#" target="_blank" class="details">鲤鱼</a></div>
+							</td>
+							<td>
+								<div><a href="#" target="_blank"><img class="img1" src="img/3.png"></a></div>
+								<div class="div1"><a href="#" target="_blank" class="categories">奶类及制品</a></div>
+								<div><a href="#" target="_blank" class="details">牛奶&nbsp</a><a href="#" target="_blank" class="details">酸奶&nbsp</a><a href="#" target="_blank" class="details">奶酪&nbsp</a><a href="#" target="_blank" class="details">全脂牛奶粉&nbsp</a><a href="#" target="_blank" class="details">奶片</a></div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div><a href="#" target="_blank"><img class="img1" src="img/4.png"></a></div>
+								<div class="div1"><a href="#" target="_blank" class="categories">蔬果和菌藻</a></div>
+								<div><a href="#" target="_blank" class="details">苹果&nbsp</a><a href="#" target="_blank" class="details">香蕉&nbsp</a><a href="#" target="_blank" class="details">番茄&nbsp</a><a href="#" target="_blank" class="details">黄瓜&nbsp</a><a href="#" target="_blank" class="details">小白菜</a></div>
+							</td>
+							<td>
+								<div><a href="#" target="_blank"><img class="img1" src="img/5.png"></a></div>
+								<div class="div1"><a href="#" target="_blank" class="categories">坚果、大豆及制品</a></div>
+								<div><a href="#" target="_blank" class="details">核桃&nbsp</a><a href="#" target="_blank" class="details">花生米&nbsp</a><a href="#" target="_blank" class="details">栗子&nbsp</a><a href="#" target="_blank" class="details">黄豆&nbsp</a><a href="#" target="_blank" class="details">豆浆</a></div>
+							</td>
+							<td>
+								<div><a href="#" target="_blank"><img class="img1" src="img/6.png"></a></div>
+								<div class="div1"><a href="#" target="_blank" class="categories">饮料</a></div>
+								<div><a href="#" target="_blank" class="details">咖啡粉&nbsp</a><a href="#" target="_blank" class="details">茶水&nbsp</a><a href="#" target="_blank" class="details">杏仁露&nbsp</a><a href="#" target="_blank" class="details">椰子汁饮料&nbsp</a><a href="#" target="_blank" class="details">啤酒</a></div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div><a href="#" target="_blank"><img class="img1" src="img/7.png"></a></div>
+								<div class="div1"><a href="#" target="_blank" class="categories">食用油、油脂及制品</a></div>
+								<div><a href="#" target="_blank" class="details">豆油&nbsp</a><a href="#" target="_blank" class="details">花生油&nbsp</a><a href="#" target="_blank" class="details">色拉油&nbsp</a><a href="#" target="_blank" class="details">辣椒油&nbsp</a><a href="#" target="_blank" class="details">猪肉</a></div>
+							</td>
+							<td>
+								<div><a href="#" target="_blank"><img class="img1" src="img/8.png"></a></div>
+								<div class="div1"><a href="#" target="_blank" class="categories">调味品</a></div>
+								<div><a href="#" target="_blank" class="details">食盐&nbsp</a><a href="#" target="_blank" class="details">榨菜&nbsp</a><a href="#" target="_blank" class="details">酱油&nbsp</a><a href="#" target="_blank" class="details">醋&nbsp</a><a href="#" target="_blank" class="details">芝麻酱</a></div>
+							</td>
+							<td>
+								<div><a href="#" target="_blank"><img class="img1" src="img/9.png"></a></div>
+								<div class="div1"><a href="#" target="_blank" class="categories">零食、点心、冷饮</a></div>
+								<div><a href="#" target="_blank" class="details">饼干&nbsp</a><a href="#" target="_blank" class="details">巧克力&nbsp</a><a href="#" target="_blank" class="details">太妃糖&nbsp</a><a href="#" target="_blank" class="details">红薯干&nbsp</a><a href="#" target="_blank" class="details">冰淇淋</a></div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div><a href="#" target="_blank"><img class="img1" src="img/10.png"></a></div>
+								<div class="div1"><a href="#" target="_blank" class="categories">其它</a></div>
+								<div><a href="#" target="_blank" class="details">枸杞&nbsp</a><a href="#" target="_blank" class="details">陈皮&nbsp</a><a href="#" target="_blank" class="details">花粉&nbsp</a><a href="#" target="_blank" class="details">葛根&nbsp</a><a href="#" target="_blank" class="details">薄荷</a></div>
+							</td>
+							<td>
+								<div><a href="#" target="_blank"><img class="img1" src="img/11.png"></a></div>
+								<div class="div1"><a href="#" target="_blank" class="categories">菜肴</a></div>
+								<div><a href="#" target="_blank" class="details">私家菜&nbsp</a><a href="#" target="_blank" class="details">家常菜&nbsp</a><a href="#" target="_blank" class="details">上海菜&nbsp</a></div>
+							</td>
+							<td>
+								<div><a href="#" target="_blank"><img class="img1" src="img/w1.ico" style="transform: rotate(180deg);width: 109px;"></a></div>
+								<div class="div1" style="margin: 21px 0;"><a href="contFrame/foodfl_select2.html" target="_blank" class="categories">更多分类</a></div>
+					</table>
+					<table border="0" id="table2">
+						
+					</table>
+				</div>
+				
+			</div>
+			<div id="foot">
+				<p id="rightcopy">版权所有 © 2021 桂工蓝桥1班第九工作室 9zu.com 沪ICP备99999999号 | 证照信息</p>
+			</div>
+		</div>
+	</body>
+	
+</html>

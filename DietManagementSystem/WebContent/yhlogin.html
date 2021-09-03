@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="css/loginRegister.css"/>
+	<title>登录</title>
+</head>
+<body id="panel">
+	<form name="form1">
+		<p>
+			<input type="text" name="phone" id="phone" placeholder="手机号"/><span style="color: red;">&nbsp;</span>
+		</p>
+		<p>
+			<input type="password" name="pwd" id="pwd" placeholder="密码"/><span style="color: red;">&nbsp;</span>
+		</p>
+		<p>
+			<input type="button" value="登录" id="login"/>
+		</p>
+		<p>
+			<a href="#" id="left" style="display: none;">手机短信登录</a>
+			<span id="right">
+				<a href="zhuce.html">注册</a> | 
+				<a href="#">忘记密码</a>
+			</span>
+		</p>
+	</form>
+</body>
+<script type="text/javascript" src="js/jquery-1.8.0.min.js" ></script>
+<script type="text/javascript" src="js/jquery.js" ></script>
+<script type="text/javascript">
+//校验手机号: 字母数字下划线等合法字符构成
+function checkPhone(){
+	if(/^1\d{10}$/.test(form1.phone.value)||form1.phone.value=="admin"){
+			$("#phone").next().html("&nbsp;");
+			return true;
+		}else if(form1.phone.value == ''){
+			$("#phone").next().html("手机号、账号不能为空");
+			return false;
+		}else{
+			$("#phone").next().html("手机号格式错误");
+			return false;
+		}
+}
+
+// 校验密码: 6位数字
+function checkPwd(){
+	if(/^\d{6}/.test(form1.pwd.value)||form1.pwd.value=="123"){
+		$("#pwd").next().html("&nbsp;");
+		return true;
+	}else if(form1.pwd.value == ''){
+		$("#pwd").next().html("密码不能为空");
+		return false;
+	}else{
+		$("#pwd").next().html("密码不符合要求:密码6位");
+		return false;
+	}
+}
+
+function doLogin(){
+	if(form1.phone.value=="admin"&&form1.pwd.value=="123"){
+		location = "/DietManagementSystem/admin/index.html";
+	}else{
+		if(checkPhone() && checkPwd()){
+			var url = "/DietManagementSystem/YhController/selectToLogin.do";
+			var params = {
+				phone:form1.phone.value,
+				pwd:form1.pwd.value
+			}
+			$.post(url,params,function(yh){
+				if(null != yh && "" != yh) {// 不为空说明该用户存在，登录成功
+					// 登录成功，将yh转成json字符串存放在sessionStorage中，方便在其他页面使用yh
+					sessionStorage.setItem("yh",JSON.stringify(yh));
+				
+					location = "/DietManagementSystem/index.html";
+				}else {//yh值为空，说明该用户不存在，用户名或密码有误，重新登录
+					checkPhone();
+					checkPwd();
+				}
+			});
+		}
+	}
+}
+
+$("[name='phone']").blur(function(){
+		checkPhone();
+ 	
+});
+
+$("[name='pwd']").blur(function(){
+		checkPwd();
+	
+});
+
+$("#login").click(function(){
+	doLogin();
+});
+
+//判断如果按下Enter回车键，则登录
+$(document).keydown(function(e){
+	e = e || window.event
+	if(e.keyCode == 13){//Enter键对应键值为13
+		doLogin();
+	}
+});
+</script>
+</html>

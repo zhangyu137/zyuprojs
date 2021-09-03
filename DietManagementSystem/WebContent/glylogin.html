@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="css/loginRegister.css"/>
+	<title>管理员登录</title>
+</head>
+<body id="panel">
+	<form name="form1">
+		<p>
+			<input type="text" name="yhm" id="yhm" placeholder="账号"/><span style="color: red;">&nbsp;</span>
+		</p>
+		<p>
+			<input type="password" name="pwd" id="pwd" placeholder="密码"/><span style="color: red;">&nbsp;</span>
+		</p>
+		<p>
+			<input type="button" value="登录" id="login"/>
+		</p>
+		<p>
+			<a href="#" id="left">手机短信登录</a>
+			<span id="right">
+				<a href="#">忘记密码</a>
+			</span>
+		</p>
+	</form>
+</body>
+<script type="text/javascript" src="js/jquery-1.8.0.min.js" ></script>
+<script type="text/javascript" src="js/jquery.js" ></script>
+<script type="text/javascript">
+//校验账号: 系统默认admin
+function checkYhm(){
+	if($("[name='yhm']").val()=="admin"){
+		$("#yhm").next().html("");
+		return true;
+	}else{
+		$("#yhm").next().html("账号错误！");
+		return false;
+	}
+}
+
+// 校验密码: 系统默认123
+function checkPwd(){
+	if($("[name='pwd']").val()=="123"){
+		$("#pwd").next().html("");
+		return true;
+	}else{
+		$("#pwd").next().html("密码错误！");
+		return false;
+	}
+}
+
+function doLogin(){
+	if(checkYhm() && checkPwd()){
+		location = "/DietManagementSystem/admin/index.html";
+	}else {
+		checkYhm();
+		checkPwd();
+		}
+}
+
+
+$("[name='yhm']").blur(function(){
+ 	checkYhm();
+});
+
+$("[name='pwd']").blur(function(){
+	checkPwd();
+});
+
+$("#login").click(function(){
+	doLogin();
+});
+
+//判断如果按下Enter回车键，则登录
+$(document).keydown(function(e){
+	e = e || window.event
+	if(e.keyCode == 13){//Enter键对应键值为13
+		doLogin();
+	}
+});
+</script>
+</html>
